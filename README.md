@@ -3,6 +3,8 @@
 # JAVA
 * Lombok 라이브러리 활용
   * <a href="https://github.com/awesomejang/TIL/blob/main/Java/Lombok.md">주요 어노테이션 사용법과 주의점</a>
+* AssertJ
+  * <a href="https://github.com/awesomejang/TIL/blob/main/Java/Test/AssertJ_Exception_assertions.md">Exception assertions</a>
 # SPRING
 
 # EDU
