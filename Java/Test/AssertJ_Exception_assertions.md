@@ -17,10 +17,11 @@ __예외클래스 종류, 예외 메세지 뿐만 아니라 다양한 테스트 
 ```java
 @Test
 public void textException() {
-    assertThatExceptionOfType(IOException.class).isThrownBy(() -> { // 예외발생 테스트 로직 
-    throw new IOException("boom!"); }).withMessage("%s!", "boom") // format 형식의 메시지 확인
-                 .withMessageContaining("boom") // 예외 메세지 포함여부 확인
-                 .withNoCause();
+    assertThatExceptionOfType(IOException.class).isThrownBy(() -> { 
+        // 예외발생 테스트 로직 
+        throw new IOException("boom!"); }).withMessage("%s!", "boom") // format 형식의 메시지 확인  
+                                          .withMessageContaining("boom") // 예외 메세지 포함여부 확인
+                                          .withNoCause();
 
 }
 ```
