@@ -5,7 +5,12 @@
   * <a href="https://github.com/awesomejang/TIL/blob/main/Java/Lombok.md">주요 어노테이션 사용법과 주의점</a>
 * AssertJ
   * <a href="https://github.com/awesomejang/TIL/blob/main/Java/Test/AssertJ_Exception_assertions.md">Exception assertions</a>
+* 필드의 구분 
+  * <a href="https://github.com/awesomejang/TIL/blob/main/Java/Field_division.md">필드의 구분</a>
+    
 # SPRING
+
+
 
 # EDU
 * 객체지향 프로그래밍
