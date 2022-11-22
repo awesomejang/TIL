@@ -14,7 +14,7 @@
 
 # Exception
 * Jackson
-  * <a href="https://github.com/awesomejang/TIL/blob/main/Java/Field_division.md">No Creators, like default construct, exist): cannot deserialize from Object value (no delegate- or property-based Creator</a>  
+  * <a href="https://github.com/awesomejang/TIL/blob/main/Java/Field_division.md">Cannot construct instance of (no Creators, like default constructor, exist)</a>  
   
 
 
