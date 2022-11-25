@@ -14,7 +14,7 @@
 
 # Exception
 * Jackson
-  * <a href="https://github.com/awesomejang/TIL/blob/main/Java/Exception/Jackson/NoCreators.md">Cannot construct instance of (no Creators, like default constructor, exist)</a>  
+  * <a href="https://github.com/awesomejang/TIL/blob/main/Exception/Jackson/NoCreators.md">Cannot construct instance of (no Creators, like default constructor, exist)</a>  
   
 
 
