@@ -10,7 +10,7 @@
     
 # SPRING
 * Jackson
-  * <a href="https://github.com/awesomejang/TIL/blob/main/Java/Field_division.md">필드의 구분</a>  
+* Security  
 
 # Exception
 * Jackson
