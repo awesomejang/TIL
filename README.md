@@ -10,7 +10,8 @@
     
 # SPRING
 * Jackson
-* Security  
+* Security
+* JWT  
 
 # Exception
 * Jackson
