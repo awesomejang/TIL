@@ -12,6 +12,7 @@
 * Jackson
 * Security
 * JWT  
+  * <a href="https://github.com/awesomejang/TIL/blob/main/Spring/JWT.md">JWT의 개념정리</a>
 
 # Exception
 * Jackson
