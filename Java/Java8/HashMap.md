@@ -27,4 +27,11 @@ HashMap<String, String> map = new HashMap<>();
 String value = map.putIfAbsent("A", "A_VALUE"); // null
 ```
 
+## computeIfAbsent()
 
+```java
+V computeIfAbsent(K key,Function<? super K, ? extends V> mappingFunction)
+```
+
+* key : Map의 key값
+* 
