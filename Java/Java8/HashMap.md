@@ -34,4 +34,13 @@ V computeIfAbsent(K key,Function<? super K, ? extends V> mappingFunction)
 ```
 
 * key : Map의 key값
-* 
+* mappingFunction : null이면 Exception 발생
+* key값이 존재하면 
+    * key값의 value값을 리턴 
+* key값이 존재하지 않으면
+    * Map에 key, value(mappingFunction 실행결과)를 저장하고 저장한 value를 리턴한다.
+
+```java
+HashMap<String, String> map = new HashMap<>();
+String value = map.computeIfAbsent("A", "A_VALUE"); // A_VALUE
+```
