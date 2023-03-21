@@ -67,3 +67,20 @@ map.compute("D", (key, value) -> {
             }
         });
 ```
+
+## computeIfPresent()
+```java
+V computeIfPresent(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction) 
+```
+* key값이 존재하면
+    * remappingFunction 함수의 결과로 value를 변경하고 리턴한다.
+* key값이 존재하지 않으면 
+    * null을 리턴한다.
+```java
+HashMap<String, String> map = new HashMap<>();
+map.put("A", "A_VALUE");
+
+String A_value = map.computeIfPresent("A", (key, value) -> value.concat("UPDATE")); // A_VALUE -> A_VALUE_UPDATE
+
+String B_value = map.computeIfPresent("B", (key, value) -> value.concat("UPDATE")) // null
+```
