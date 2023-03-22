@@ -84,3 +84,24 @@ String A_value = map.computeIfPresent("A", (key, value) -> value.concat("UPDATE"
 
 String B_value = map.computeIfPresent("B", (key, value) -> value.concat("UPDATE")) // null
 ```
+
+## merge()
+```java
+V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction)
+```
+* key값이 존재하면 
+    * remappingFunction 실행 결과로 value를 변경한다. 
+    * remappingFunction 실행결과가 null 이라면 
+        * map에서 해당 key를 삭제한다. 
+* key값이 존재하지 않으면
+    * Map에 key, value를 추가한다. 
+
+```java
+HashMap<String, String> map = new HashMap<>();
+// map에 key : "A" value : "A_VALUE"가 추가된다.
+map.merge("A", "A_VALUE", (v1, v2) -> v1.concat(v2));
+// key : "A"의 value가 A_VALUE_Extra로 변경된다.
+map.merge("A", "_Extra", (v1, v2) -> v1.concat(v2));
+// key "A" 가 map에서 삭제된다.
+map.merge("A", "VALUE", (v1, v2) -> null);
+```
