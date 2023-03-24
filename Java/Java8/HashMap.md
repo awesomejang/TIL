@@ -100,8 +100,10 @@ V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingF
 HashMap<String, String> map = new HashMap<>();
 // map에 key : "A" value : "A_VALUE"가 추가된다.
 map.merge("A", "A_VALUE", (v1, v2) -> v1.concat(v2));
+
 // key : "A"의 value가 A_VALUE_Extra로 변경된다.
 map.merge("A", "_Extra", (v1, v2) -> v1.concat(v2));
+
 // key "A" 가 map에서 삭제된다.
 map.merge("A", "VALUE", (v1, v2) -> null);
 ```
