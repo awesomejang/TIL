@@ -107,3 +107,16 @@ map.merge("A", "_Extra", (v1, v2) -> v1.concat(v2));
 // key "A" 가 map에서 삭제된다.
 map.merge("A", "VALUE", (v1, v2) -> null);
 ```
+
+## getOrDefault()
+```java
+V getOrDefault(Object key, V defaultValue)
+```
+* key값이 존재하면 
+    * Map의 value값을 리턴한다.
+* key값이 존재하지 않으면
+    * defaultValue을 반환한다.
+```java
+stringMap.getOrDefault("A", "Default_VALUE"); // A
+stringMap.getOrDefault("B", "Default_VALUE"); // Default_VALUE
+```
