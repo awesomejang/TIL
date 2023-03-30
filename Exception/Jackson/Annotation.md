@@ -15,9 +15,39 @@ public class ResponseDto {
         this.name = name;
         this.age = age;
         this.email = email;
+    }        
+}
+
+// ==== Enum 사용 예시 ===//
+public enum Color {
+    RED("FF0000"),
+    GREEN("00FF00"),
+    BLUE("0000FF");
+
+    private String value;
+
+    Color(String value) {
+        this.value = value;
     }
-        
+
+    @JsonCreator
+    public static Color fromString(String value) {
+        for (Color color : Color.values()) {
+            if (color.value.equalsIgnoreCase(value)) {
+                return color;
+            }
+        }
+        throw new IllegalArgumentException("Invalid color value: " + value);
+    }
+
+    @JsonValue
+    public String getValue() {
+        return value;
+    }
 }
  ```
+<br/>
+
+ ## @JsonInclude
 
 
