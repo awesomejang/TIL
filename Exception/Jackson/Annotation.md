@@ -49,5 +49,7 @@ public enum Color {
 <br/>
 
  ## @JsonInclude
+ * Jackson의 직렬화, 역직렬화의 대상은 객체의 모든 필드 이지만 대상필드를 선택하는데 사용
+    * Include 열거형 타입으로 전략을 결정
 
 
