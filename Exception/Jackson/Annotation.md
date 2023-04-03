@@ -49,7 +49,27 @@ public enum Color {
 <br/>
 
  ## @JsonInclude
- * Jackson의 직렬화, 역직렬화의 대상은 객체의 모든 필드 이지만 대상필드를 선택하는데 사용
+ * Jackson의 직렬화 대상은 객체의 모든 필드 이지만 어노테이션을 사용하여 대상을 지정한다.
     * Include 열거형 타입으로 전략을 결정
+```java
+@Getter
+@JsonInclude(JsonInclude.Include.NON_NULL) //NULL이 아닌 필드만 역직렬화 대상으로 지정
+public class ResponseDto {
+    private String name;
+    private String age;
+    private String email;
+    private target tt;
+}
+```
+* Include.NON_NULL : NULL값이 아닌 필드만 대상으로 지정 
+* Include.NON_EMPTY : NULL값이 아니며, Collection, 배열등의 값이 비어있지 않은 필드만 
+                     대상으로 지정 
+* Include.NON_DEFAULT : 필드의 값이 기본값(숫자 : 0, boolean : false)과 다른 경우에만 대상으로 지정                      
+* Include.ALWAYS : 모든 필드를 대상으로 포함합니다.(default)
+* Include.CUSTOM : 직렬화 필드를 선택하는 커스텀 필터를 지정합니다. 
+    * FilteringJacksonValue 클래스를 상속받아 커스텀 필터를 생성할 수 있습니다.
+
+
+
 
 
