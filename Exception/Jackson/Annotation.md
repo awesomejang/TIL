@@ -69,7 +69,23 @@ public class ResponseDto {
 * Include.CUSTOM : 직렬화 필드를 선택하는 커스텀 필터를 지정합니다. 
     * FilteringJacksonValue 클래스를 상속받아 커스텀 필터를 생성할 수 있습니다.
 
+<br/>
 
+## @JsonProperty
+* 직렬화, 역직렬화 시 JSON key와 자바 객체의 필드를 매핑할때 사용한다. 
+```java
+@Data
+public class ResponseDto {
+    // 역직렬화 : JSON key "username"를 필드 name에 매핑한다.
+    // 직렬화 : name필드는 JSON key "username"으로 직렬화 된다.
+    @JsonProperty("username") 
+    private String name;
+    private String age;
+    private String email;
+    private target tt;
+}
+```
+* Getter, Setter 메소드에 붙여서 직렬화, 역직렬화 매핑을 원할때 지정가능하다.
 
 
 
