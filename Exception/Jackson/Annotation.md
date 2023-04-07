@@ -53,7 +53,7 @@ public enum Color {
     * Include 열거형 타입으로 전략을 결정
 ```java
 @Getter
-@JsonInclude(JsonInclude.Include.NON_NULL) //NULL이 아닌 필드만 역직렬화 대상으로 지정
+@JsonInclude(JsonInclude.Include.NON_NULL) //NULL이 아닌 필드만 직렬화 대상으로 지정
 public class ResponseDto {
     private String name;
     private String age;
@@ -101,5 +101,20 @@ public class ResponseDto {
 }
 ```
 
-## @Json 
+## @JsonIgnoreProperties
+* 클래스 레벨에서 사용하며 직렬화/역직렬화 제외 대상 필드명을 파라미터로 전달하여 제외시킨다.
+```java
+@JsonIgnoreProperties({"name", "age"}) // name, age필드를 대상에서 제외시킨다.
+public class ResponseDto {    
+    private String name;    
+    private String age;
+    private String email;
+    private target tt;
+}
+```
+* allowSetters
+    * true로 지정하면 역직렬화는 수행된다.
+* allowGetters
+    * true로 지정하면 직렬화는 수행된다.
+* 
 
