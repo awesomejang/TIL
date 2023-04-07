@@ -87,5 +87,19 @@ public class ResponseDto {
 ```
 * Getter, Setter 메소드에 붙여서 직렬화, 역직렬화 매핑을 원할때 지정가능하다.
 
+<br/>
 
+## @JsonIgnore 
+* 필드레벨에서 사용하며 JSON 직렬화/역직렬화 대상에서 제외시킨다.
+```java
+public class ResponseDto {    
+    private String name;
+    @JsonIgnore // age는 직렬화/역직렬화 대상에서 제외된다.
+    private String age;
+    private String email;
+    private target tt;
+}
+```
+
+## @Json 
 
