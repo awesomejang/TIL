@@ -46,3 +46,8 @@ List<Integer> collect = strings.stream().map(item -> item.length())
                                         .collect(Collectors.toList());
 ```
 
+<br/>
+
+## sorted()
+
+
