@@ -54,5 +54,21 @@ List<Integer> collect = strings.stream().map(item -> item.length())
 Stream<T> sorted();
 Stream<T> sorted(Comparator<? super T> comparator);
 ```
+Comparable 인터페이스를 구현한 객체의 경우 기본적으로 compareTo 메소드를 
+사용하여 정렬합니다. 
+Comparable을 구현하지 않았을 경우, Comparator를 인자로 전달하여 정렬 기준을 지정 가능하다. 
+처리 후 새로운 스트림을 리턴한다. 
+```java
+List<Ad> adList = new ArrayList<>();
+adList.add(new Ad(1, "1A"));
+adList.add(new Ad(2, "2A"));
+adList.add(new Ad(3, "3A"));
+adList.add(new Ad(4, "1B"));
+adList.add(new Ad(5, "2B"));
 
-
+// ComponentSeq를 기준으로 역순으로 정렬 한다.
+List<Ad> collect = adList.stream()
+                         .sorted(Comparator.comparingLong(Ad::getComponentSeq)
+                         .reversed())
+                         .collect(Collectors.toList());
+```
