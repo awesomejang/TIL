@@ -49,5 +49,10 @@ List<Integer> collect = strings.stream().map(item -> item.length())
 <br/>
 
 ## sorted()
+스트림의 요소를 정렬하여 새로운 스트림을 반환합니다. 
+```java
+Stream<T> sorted();
+Stream<T> sorted(Comparator<? super T> comparator);
+```
 
 
