@@ -77,4 +77,9 @@ List<Ad> collect = adList.stream()
 그룹핑은 스트림의 요소들을 원하는 기준에 따라 그룹핑하고, 그룹별로 처리할 수 있는 방법을 제공한다. java8부터는 Collectors 클래스에서 다양한 그룹핑 연산을 제공하며, groupingBy 메서드를 사용하여 스트림의 요소들을 그룹화할 수 있다. 
 이를 통해 스트림에서 요소들을 그룹별로 처리하거나, 그룹별로 결과를 수집할 수 있다. 
 ```java
+public static <T, K> Collector<T, ?, Map<K, List<T>>> groupingBy(Function<? super T, ? extends K> classifier)
+
+public static <T, K, A, D>
+    Collector<T, ?, Map<K, D>> groupingBy(Function<? super T, ? extends K> classifier,
+                                          Collector<? super T, A, D> downstream)
 ```
