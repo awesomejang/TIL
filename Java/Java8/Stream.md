@@ -84,3 +84,20 @@ public static <T, K, A, D>
     Collector<T, ?, Map<K, D>> groupingBy(Function<? super T, ? extends K> classifier,
                                           Collector<? super T, A, D> downstream)
 ```
+```java
+//== 초기 데이터 ==//
+List<Ad> adList = new ArrayList<>();
+adList.add(new Ad(1, "1A"));
+adList.add(new Ad(1, "2A"));
+adList.add(new Ad(3, "3A"));
+adList.add(new Ad(4, "1B"));
+adList.add(new Ad(5, "2B"));
+//===============//
+// Ad의 첫번째 파라미터를 기준으로 groupingBy
+Map<Long, List<Ad>> collect1 = adList.stream().collect(Collectors.groupingBy(ad -> ad.getComponentSeq()));
+
+//== 두번째 파라미터로 Collectors을 주면 Map의 각 그룹에 대한 결과를 수집하는데 사용
+Map<Long, Long> collect1 = adList.stream().collect(Collectors.groupingBy(ad -> ad.getComponentSeq(), Collectors.counting()));
+
+
+```
