@@ -98,6 +98,22 @@ Map<Long, List<Ad>> collect1 = adList.stream().collect(Collectors.groupingBy(ad 
 
 //== 두번째 파라미터로 Collectors을 주면 Map의 각 그룹에 대한 결과를 수집하는데 사용
 Map<Long, Long> collect1 = adList.stream().collect(Collectors.groupingBy(ad -> ad.getComponentSeq(), Collectors.counting()));
+```
 
+<br/>
 
+## reduce()
+스트림의 모든 요소를 결합하여 단일 값으로 축소하는 기능을 제공한다. 
+reduce() 메서드는 스트림의 최종 연산 중 하나이며, 스트림의 요소를 하나의 값으로 합치는 작업을 수행한다. 
+```java
+// Stream의 요소의 타입이 최종연산의 결과타입이 된다. 
+T reduce(T identity, BinaryOperator<T> accumulator);
+
+// 최종 연산 결과를 커스텀 할수 있다.
+<U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner);
+```
+```java
+List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
+// reduce = 15
+Integer reduce = integers.stream().reduce(0, Integer::sum);
 ```
