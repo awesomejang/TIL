@@ -84,6 +84,7 @@ public static <T, K, A, D>
     Collector<T, ?, Map<K, D>> groupingBy(Function<? super T, ? extends K> classifier,
                                           Collector<? super T, A, D> downstream)
 ```
+
 ```java
 //== 초기 데이터 ==//
 List<Ad> adList = new ArrayList<>();
@@ -92,7 +93,9 @@ adList.add(new Ad(1, "2A"));
 adList.add(new Ad(3, "3A"));
 adList.add(new Ad(4, "1B"));
 adList.add(new Ad(5, "2B"));
+
 //===============//
+
 // Ad의 첫번째 파라미터를 기준으로 groupingBy
 Map<Long, List<Ad>> collect1 = adList.stream().collect(Collectors.groupingBy(ad -> ad.getComponentSeq()));
 
@@ -116,4 +119,30 @@ T reduce(T identity, BinaryOperator<T> accumulator);
 List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
 // reduce = 15
 Integer reduce = integers.stream().reduce(0, Integer::sum);
+```
+
+<br/>
+
+## flatMap()
+flatMap 메소드는 Stream의 각 요소에 대해 하나 이상의 새로운 요소를 생성하고, 이러한 새로운 요소를 담은 하나의 새로운 Stream을 반환하는 중간 연산입니다.
+
+flatMap은 Stream을 인자로 받고 매핑된 Stream을 하나의 Stream으로 통합합니다. flatMap은 다차원의 컬렉션에 대한 Stream을 생성하여 각 요소를 일차원화 할 때 사용하기 용이합니다. 
+
+```java
+<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
+```
+```java
+List<String> strings = Arrays.asList("hello", "world");
+
+// map함수의 반환값은 하나의 요소로 변환
+// {["h","e","l","l","o"], ["w","o","r","l","d"]}
+List<String[]> collect2 = strings.stream()
+                                 .map(item -> item.split(""))
+                                 .collect(Collectors.toList());
+
+// 각 요소를 Stream으로 변환 후 이러한 Stream들을 하나의 새로운 Stream으로 평면화
+// ["h","e","l","l","o", "w","o","r","l","d"]
+List<String> collect3 = strings.stream()
+                               .flatMap(item -> Arrays.stream(item.split("")))
+                               .collect(Collectors.toList());
 ```
