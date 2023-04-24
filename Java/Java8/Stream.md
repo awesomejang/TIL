@@ -146,3 +146,5 @@ List<String> collect3 = strings.stream()
                                .flatMap(item -> Arrays.stream(item.split("")))
                                .collect(Collectors.toList());
 ```
+
+## collect()
