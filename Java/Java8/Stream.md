@@ -148,3 +148,15 @@ List<String> collect3 = strings.stream()
 ```
 
 ## collect()
+Stream API의 collect() 메서드는 Stream의 요소를 컬렉션으로 변환하는 메서드입니다. collect() 메서드를 사용하면 Stream의 요소를 List, Set, Map 등의 컬렉션으로 변환할 수 있습니다.
+
+collect() 메서드는 Collector객체를 인수로 받고, Stream의 요소를 
+어떤 형식의 컬렉션으로 수집할지 지정하는 인터페이스이다. 
+
+```java
+<R, A> R collect(Collector<? super T, A, R> collector);
+```
+```java
+// 결과를 List로 변환한다.
+List<String> collect = strings.stream().flatMap(item -> Arrays.stream(item.split(""))).collect(Collectors.toList());
+```
