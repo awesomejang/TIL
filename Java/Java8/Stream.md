@@ -158,5 +158,6 @@ collect() 메서드는 Collector객체를 인수로 받고, Stream의 요소를
 ```
 ```java
 // 결과를 List로 변환한다.
-List<String> collect = strings.stream().flatMap(item -> Arrays.stream(item.split(""))).collect(Collectors.toList());
+List<String> collect = strings.stream()
+                              .flatMap(item -> Arrays.stream(item.split(""))).collect(Collectors.toList());
 ```
