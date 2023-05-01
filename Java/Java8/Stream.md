@@ -162,3 +162,5 @@ List<String> collect = strings.stream()
                               .flatMap(item -> Arrays.stream(item.split("")))
                               .collect(Collectors.toList());
 ```
+
+
