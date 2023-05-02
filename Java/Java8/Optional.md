@@ -24,6 +24,10 @@ Optional<Ad> ad1 = Optional.of(ad);
 Optional<Object> empty = Optional.empty();
 ```
 * ofNullable(value)
-
+```java
+// Optional.ofNullable(value)
+// of()와 달리 value가 null일 경우 NPE발생이 아닌 비어있는 Optional 객체를 생성
+Optional<String> optionalValue = Optional.ofNullable(value);
+```
 
 
