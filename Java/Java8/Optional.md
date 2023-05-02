@@ -18,6 +18,12 @@ null-safe한 코드를 위해 도입된 개념으로 Optional은 데이터를 �
 Optional<Ad> ad1 = Optional.of(ad);
 ```
 * empty()
+```java
+// Optional.empty()
+// 빈 Optional 생성
+Optional<Object> empty = Optional.empty();
+```
 * ofNullable(value)
+
 
 
