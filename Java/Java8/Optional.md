@@ -30,4 +30,12 @@ Optional<Object> empty = Optional.empty();
 Optional<String> optionalValue = Optional.ofNullable(value);
 ```
 
+<br/>
+
+## __Optional 데이터 추출__
+* get()
+    * Optional 객체 안의 데이터를 리턴, 데이터가 없는 경우 예외(NoSuchElementException)이 발생
+```java
+String value = Optional.of("value").get();
+```
 
