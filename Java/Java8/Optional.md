@@ -40,6 +40,7 @@ String value = Optional.of("value").get();
 ```
 * orElse()
     * 데이터가 null일 경우 기본값을 설정할 수 있다. 
+    * 데이터가 null이 아니라면 랩핑된 데이터를 리턴한다.
 ```java
 
 Object default_value = Optional.empty()
@@ -47,4 +48,12 @@ Object default_value = Optional.empty()
 // "default Value"                               
 System.out.println(default_value);
 ```
-
+* orElseGet()
+    * 데이터가 null일 경우 Supplier 함수로부터 데이터를 동적으로 설정할 수 있다. 
+    * 데이터가 null이 아니라면 랩핑된 데이터를 리턴한다.
+```java
+Object value = Optional.empty()
+                       .orElseGet(() -> "Supplier default Value");
+// "Supplier default Value"                               
+System.out.println(value);                       
+```
