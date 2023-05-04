@@ -56,5 +56,4 @@ Object value = Optional.empty()
                        .orElseGet(() -> "Supplier default Value");
 // "Supplier default Value"                               
 System.out.println(value);                       
-
 ```
