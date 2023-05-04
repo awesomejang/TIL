@@ -38,4 +38,13 @@ Optional<String> optionalValue = Optional.ofNullable(value);
 ```java
 String value = Optional.of("value").get();
 ```
+* orElse()
+    * 데이터가 null일 경우 기본값을 설정할 수 있다. 
+```java
+
+Object default_value = Optional.empty()
+                               .orElse("default Value");
+// "default Value"                               
+System.out.println(default_value);
+```
 
