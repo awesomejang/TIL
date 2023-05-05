@@ -57,3 +57,11 @@ Object value = Optional.empty()
 // "Supplier default Value"                               
 System.out.println(value);                       
 ```
+* orElseThrow()
+    * 데이터가 null일 경우 지정된 예외가 발생한다. 
+```java
+Optional<Object> optional = Optional.empty();
+// RuntimeException이 발생한다.
+Object value = optional.orElseThrow(() -> new RuntimeException("VALUE IS NULL!"));
+System.out.println(value)
+```
