@@ -65,3 +65,5 @@ Optional<Object> optional = Optional.empty();
 Object value = optional.orElseThrow(() -> new RuntimeException("VALUE IS NULL!"));
 System.out.println(value)
 ```
+
+## __orElse(), orElseGet()의 차이점__
