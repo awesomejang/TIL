@@ -76,3 +76,21 @@ public T orElseGet(Supplier<? extends T> supplier) {
     return value != null ? value : supplier.get();
 }
 ```
+두 메소드를 보면 간단히 value가 null일 경우 파라미터로 받은 데이터를 리턴해주게 되어있는데 
+
+orElse의 경우 파라미터 other가 메소드일때 유의점이 있다. 
+
+```java
+String value = "String Value";
+Object object = Optional.ofNullable(value).orElse(getDefaultValue());
+```
+위의 상황일때 getDefaultValue()가 null이 아니기 때문에 실행되지 않을거라 생각되지만 
+실제로는 실행되는데 이유는 아래와 같이 호출되기 때문에 null여부와 무관하게 getDefaultValue 메소드는 호출 되게 된다.
+```java
+public T orElse(T getDefaultValue()) {
+    return value != null ? value : getDefaultValue();
+}
+```
+orElseGet()의 경우 Supplier로 한 번 감싸여 있기때문에 Supplier.get()으로 호출될때 실행되기 때문에 null인 경우만 발생하게 된다. 
+
+
