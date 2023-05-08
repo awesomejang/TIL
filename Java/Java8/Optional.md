@@ -67,3 +67,12 @@ System.out.println(value)
 ```
 
 ## __orElse(), orElseGet()의 차이점__
+```java
+public T orElse(T other) {
+    return value != null ? value : other;
+}
+
+public T orElseGet(Supplier<? extends T> supplier) {
+    return value != null ? value : supplier.get();
+}
+```
