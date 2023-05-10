@@ -99,4 +99,14 @@ orElseGet()의 경우 Supplier로 한 번 감싸여 있기때문에 Supplier.get
 
 ## Optional의 효율적인 사용방법 
 
-Optional에서 꺼낸 데이터의 null
+Optional의 null 여부에 따라 if문으로 처리한다면 Optional를 잘못 사용하고 있다고 생각된다. 
+```java
+Optional<String> optionalValue = Optional.ofNullable(value);
+String result = "";
+if(optionalValue.isPresent()) {
+    result = optionalValue.get();
+}else {
+    result = "empty"
+}
+
+```
