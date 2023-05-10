@@ -66,6 +66,8 @@ Object value = optional.orElseThrow(() -> new RuntimeException("VALUE IS NULL!")
 System.out.println(value)
 ```
 
+<br/>
+
 ## __orElse(), orElseGet()의 차이점__
 ```java
 public T orElse(T other) {
@@ -93,4 +95,8 @@ public T orElse(T getDefaultValue()) {
 ```
 orElseGet()의 경우 Supplier로 한 번 감싸여 있기때문에 Supplier.get()으로 호출될때 실행되기 때문에 null인 경우만 발생하게 된다. 
 
+<br/>
 
+## Optional의 효율적인 사용방법 
+
+Optional에서 꺼낸 데이터의 null
