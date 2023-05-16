@@ -116,5 +116,7 @@ public class ResponseDto {
     * true로 지정하면 역직렬화는 수행된다.
 * allowGetters
     * true로 지정하면 직렬화는 수행된다.
-* 
 
+<br/>
+
+## @JsonValue
