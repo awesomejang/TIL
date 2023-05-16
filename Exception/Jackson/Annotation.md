@@ -120,3 +120,46 @@ public class ResponseDto {
 <br/>
 
 ## @JsonValue
+JSON 직렬화 시 사용되며, 객체를 JSON형식으로 변환할 때 해당 객체의 어떤 값을 기준으로 JSON 데이터를 생성할지 결정한다. 
+
+@JsonValue 어노테이션을 사용하면 특정 객체의 값을 JSON 문자열로 직접 지정할 수 있다. 
+
+일반적으로 Jackson은 객체의 모든 필드를 직렬화하는데 @JsonValue를 사용하여 특정 메소드를 지젖하여 해당 메서드가 반환하는 값을 JSON으로 직렬화합니다. 
+
+일반적인 Dto보다는 Enum타입에서 사용성이 있을거라 생각된다. 
+```java
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @JsonValue
+    public String toJson() {
+        return name + " is " + age + " years old";
+    }
+}
+// Person 직렬화 : "John is 30 years old"
+
+public enum Status {
+    ACTIVE("active"),
+    INACTIVE("inactive"),
+    PENDING("pending");
+
+    private String value;
+
+    private Status(String value) {
+        this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+        return value;
+    }
+}
+// Status(Active) 직렬화 시 : "active"
+```
+
