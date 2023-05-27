@@ -12,18 +12,21 @@ Enum을 정의하려면 'enum'키워드를 사용한다. 각 상수는 enum내�
 
 ```java
 public enum Day {
-        MONEY("monday"),
-        TUESDAY("tuesday"),
-        WEDNESDAY("wednesday"),
-        THURSDAY("thursday"),
-        FRIDAY("friday"),
-        SATURDAY("saturday"),
-        SUNDAY("sunday");
-        
-        private final String dayString;
-        
-        Day(String dayString) {
-            this.dayString = dayString;
-        }
+    MONEY("monday"),
+    TUESDAY("tuesday"),
+    WEDNESDAY("wednesday"),
+    THURSDAY("thursday"),
+    FRIDAY("friday"),
+    SATURDAY("saturday"),
+    SUNDAY("sunday");
+    
+    private final String dayString;
+    
+    Day(String dayString) {
+        this.dayString = dayString;
     }
+}
 ```
+
+
+
