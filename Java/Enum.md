@@ -1,6 +1,6 @@
 # [JAVA] Enum타입의 활용
 
-* Enum타입이란? 
+## Enum타입이란? 
 
 자바에서 열거형을 나타내는 특별한 유형의 클래스이다. 
 상수들을 정수나 문자열과 같은 기본 타입으로 나타내어 사용했지만, 이러한 방식은 의미를 알기 어렵고, 오타가 발생하거나 잘못된 값을 사용할 수 있는 문제가 있었고 Enum은 이러한 문제를 해결하기 위해 설계되었다. 
@@ -27,6 +27,33 @@ public enum Day {
     }
 }
 ```
+
+## Enum의 주요 메소드 
+
+* values() 
+
+values() 메소드는 해당 열거체의 모든 상수를 저장한 배열을 생성하여 반환합니다. 
+```java
+@Test
+void test() {
+    Day[] values = Day.values();
+    for (Day day : values) {
+        System.out.println(day);
+    }
+}
+//===결과====//
+MONEY
+TUESDAY
+WEDNESDAY
+THURSDAY
+FRIDAY
+SATURDAY
+SUNDAY
+```
+
+* valueOf()
+valueOf 메소드는 전달된 문자열과 일치하는 해당 열거체의 상수를 반환한다. 
+
 
 
 
