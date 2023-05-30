@@ -12,7 +12,7 @@ Enum을 정의하려면 'enum'키워드를 사용한다. 각 상수는 enum내�
 
 ```java
 public enum Day {
-    MONEY("monday"),
+    MONDAY("monday"),
     TUESDAY("tuesday"),
     WEDNESDAY("wednesday"),
     THURSDAY("thursday"),
@@ -42,7 +42,7 @@ void test() {
     }
 }
 //===결과====//
-MONEY
+MONDAY
 TUESDAY
 WEDNESDAY
 THURSDAY
@@ -50,9 +50,23 @@ FRIDAY
 SATURDAY
 SUNDAY
 ```
-
 * valueOf()
+
 valueOf 메소드는 전달된 문자열과 일치하는 해당 열거체의 상수를 반환한다. 
+```java
+CallLogAspect.Day day = CallLogAspect.Day.valueOf("MONDAY");
+System.out.println(monday == CallLogAspect.Day.THURSDAY); // "MONDAY"
+System.out.println(monday == CallLogAspect.Day.TUESDAY); 
+// == 출력 ==//
+// true
+// false
+```
+
+* name()
+
+해당 열거체 상수의 이름을 반환한다.
+
+
 
 
 
