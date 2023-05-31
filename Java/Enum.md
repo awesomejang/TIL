@@ -65,6 +65,12 @@ System.out.println(monday == CallLogAspect.Day.TUESDAY);
 * name()
 
 해당 열거체 상수의 이름을 반환한다.
+```java
+CallLogAspect.Day day = CallLogAspect.Day.valueOf("MONDAY");
+String enumName = day.name();
+
+// enumName == MONDAY
+```
 
 
 
