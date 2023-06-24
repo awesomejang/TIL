@@ -136,7 +136,28 @@ __AnnotationAwareAspectJAutoProxyCreator__ 라는 빈후처리기는 스프링 �
 <br/>
 
 ## 프록시의 내부 호출 문제 
+예시 코드 
+```java 
+@Component
+public class Payment {
+    /**
+     * external() {
+     *  log.info("call external");
+     *  internal();
+     * }
+     **/
+    @Autowired
+    PaymentService paymentService; // AOP 적용대상 
 
+    public void serviceCall1() {
+        paymentService.external();
+    }
+    
+}
+```
+만약 PaymentService의 external(), internal() 둘다 AOP의 대상일때 external처럼 내부에서 같은 클래스의 메서드를 호출할때 AOP의 대상에서 제외된다. 
+
+이유는 external 메소드가 호출될떄
 
 
 
