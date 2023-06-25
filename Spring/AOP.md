@@ -156,8 +156,9 @@ public class Payment {
 }
 ```
 만약 PaymentService의 external(), internal() 둘다 AOP의 대상일때 external처럼 내부에서 같은 클래스의 메서드를 호출할때 AOP의 대상에서 제외된다. 
+* 원인 
 
-이유는 external 메소드가 호출될떄
+external()가 실행될때 스프링 컨테이너에 있는 프록시가 실제 paymentService(target)을 호출하는데 실제 target에서 실행되는 external()안에 있는 internal()메소드는 AOP타겟이라해도 프록시가 아닌 실제 target클래스에서 실행되기 때문에 AOP의 대상에서 제외된다. 
 
 
 
