@@ -133,7 +133,11 @@ __AnnotationAwareAspectJAutoProxyCreator__ 라는 빈후처리기는 스프링 �
 
 즉 다수의 어드바이저의 대상이 되도 스프링은 target마다 하나의 프록시만 생성하고 여러 어드바이스를 등록한다. 
 
+* 해결방법
+
 <br/>
+
+
 
 ## 프록시의 내부 호출 문제 
 예시 코드 
