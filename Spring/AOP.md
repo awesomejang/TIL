@@ -131,9 +131,8 @@ __AnnotationAwareAspectJAutoProxyCreator__ 라는 빈후처리기는 스프링 �
 ## 다수의 어드바이저가 등록될 경우 
 만약 "CardService"라는 클래스가 다수의 어드바이저의 대상이 된다면 CardService의 프록시는 대상만큼 생성될까? 그렇지 않다. 프록시는 하나만 생성하고 여러 어드바이스를 등록한다.
 
-즉 다수의 어드바이저의 대상이 되도 스프링은 target마다 하나의 프록시만 생성하고 여러 어드바이스를 등록한다. 
-
-* 해결방법
+즉 다수의 어드바이저의 대상이 되도 스프링은 target마다 __하나의 프록시__ 만 생성하고 
+여러 어드바이스를 등록한다. 
 
 <br/>
 
@@ -159,10 +158,15 @@ public class Payment {
     
 }
 ```
-만약 PaymentService의 external(), internal() 둘다 AOP의 대상일때 external처럼 내부에서 같은 클래스의 메서드를 호출할때 AOP의 대상에서 제외된다. 
-* 원인 
+만약 PaymentService의 external(), internal() 둘다 AOP의 대상일때 external()
+처럼 내부에서 __같은 클래스__ 의 메서드를 호출할때 AOP가 정상적으로 적용되지 않는다.
 
-external()가 실행될때 스프링 컨테이너에 있는 프록시가 실제 paymentService(target)을 호출하는데 실제 target에서 실행되는 external()내부에서 실행되는 internal()메소드는 AOP의 대상이라 해도 프록시가 아닌 실제 target클래스에서 실행되기 때문에 AOP의 대상에서 제외된다. 
+<h2>원인</h2>
+
+external()가 실행될때 스프링 컨테이너에 있는 프록시가 실제 paymentService(target)을 호출하는데 실제 target에서 실행되는 external() 내부에서 실행되는 internal()은 AOP의 대상이라 해도 프록시가 아닌 실제 target클래스에서 실행되기 때문에 AOP의 대상에서 제외된다. 
+
+<h2>해결방법</h2>
+내부에서 호출해야 하는 메소드를
 
 
 
