@@ -166,7 +166,25 @@ public class Payment {
 external()가 실행될때 스프링 컨테이너에 있는 프록시가 실제 paymentService(target)을 호출하는데 실제 target에서 실행되는 external() 내부에서 실행되는 internal()은 AOP의 대상이라 해도 프록시가 아닌 실제 target클래스에서 실행되기 때문에 AOP의 대상에서 제외된다. 
 
 <h2>해결방법</h2>
-내부에서 호출해야 하는 메소드를
+다양한 방법이 있지만 대표적으로 내부 호출되는 메소드의 기능을 다른 클래스로 분리하여 호출하는 것이 가장좋다. 다른 클래스로 분리하고 해당 기능을 내부에서 호출한다.
+
+```java
+@RequiredArgsConstructor
+@Service
+public class paymentService {
+
+    private final InternalService internalService;
+    
+    public void external() {
+        log.info("call external");
+        internalService.internal();
+    }
+}
+```
+
+혹은 가능하다면 두 기능을 분리한 후 클라이언트에서 external(), internal()를 각 각 호출하는 방법도 가능하다.
+
+
 
 
 
