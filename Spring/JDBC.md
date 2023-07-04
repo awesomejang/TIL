@@ -7,8 +7,14 @@
 > 이런한 문제를 해결하기 위해 "JDBC"라는 자바 표준이 등장한다. 
 
 ## JDBC 표준 인터페이스 
-> JDBC(Java Database Connectivity)는 자바에서 데이터베이스에 접속할 수 있도록 하는 자바 API다. JDBC
+> JDBC(Java Database Connectivity)는 자바에서 데이터베이스에 접속할 수 있도록 하는 자바 API다. JDBC는 데이터베이스에서 자료를 쿼리하거나 업데이트 하는 방법을 제공한다. 
 
+* JDBC 인터페이스 구성 요소 
+    * Connection - 연결 
+    * Statement - SQL 전달
+    * ResultSet - SQL 요청 응답 
+
+JDBC 인터페이스를 각각의 DB에 맞도록 구현한 라이브러리를 DB벤더에서 제공하는데 이것을 JDBC 드라이버라 한다. 
 
 
 
