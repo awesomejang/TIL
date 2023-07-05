@@ -29,7 +29,25 @@ JDBC는 오래되고 사용법도 복잡하기 때문에 JDBC를 편리하게 �
 
 ## JDBC를 사용한 DB연결 
 ```java
+//== DriverManager를 통한 DB 연결 ==//
+/**
+ * java.sql.DriverManager
+ **/
+public Connection getConnection() {
+    // URL -> JDBC URL
+    // USERNAME -> DB 접속계정
+    // PASSSWORD -> 계정 비밀번호
+    try {
+        Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    } catch(SQLException e) {
+            
+    }
+    
+}
 ```
+라이브러리 중 데이터베이스 드라이버(JDBC)를 찾아 해당 드라이버의 커넥션을 반환한다.
+
+
 
 
 
