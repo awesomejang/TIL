@@ -10,7 +10,14 @@ DataSource는 커넥션을 획득하는 방법을 __추상화__ 하는 인터페
 __간단한 HikariDataSource 생성 예제__
 ```java
 HikariDataSource dataSource = new HikariDataSource();
-dataSource.setJdbcUrl(URL);
-dataSource.setUsername(USERNAME);
-dataSource.setPassword(PASSWORD)
+dataSource.setJdbcUrl(URL); // JDBC URL
+dataSource.setUsername(USERNAME); // DB username
+dataSource.setPassword(PASSWORD); // DB password
+dataSource.setMaximumPoolSize(10); // custom Pool Size
+dataSource.setPoolName("CustomPoolName");
 ```
+
+<h3>커넥션 생성 주요사항</h3>
+
+커넥션 풀에 커넥션을 채울때 별도의 쓰레드를 통하여 커넥션을 채운다. 
+별도의 쓰레드를 통해 커넥션을 채우는 이유는 커넥션을 채우는 것은 상대적으로 오래 걸리는 일이기 때문에 같은 쓰레드로 채운다면 애플리케이션 실행 시간이 늦어진다. 애플리케이션 실행시간에 영향을 주지 않기 위해 별도의 쓰레드를 사용해서 커넥션 풀을 채운다.
