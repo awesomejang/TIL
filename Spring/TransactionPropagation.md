@@ -46,7 +46,7 @@ __`marked as rollback-only`__
 내부 트랜잭션이 롤백되면 해당 트랜잭션에 `rollback-only`라고 마킹을 하게된다. 
 이렇게 되면 외부 트랜잭션이 커밋을 실행하면 트랜잭션이 `rollbackOnly=true`로 되어 있기에 물리 트랜잭션은 롤백되게 된다. 
 
-이럴경우 작업자는 외부 트랜잭션의 커밋을 기대했으나 결과적으로 롤백되기 때문에 기대와 다르게 실행되게 된다. 스프링은 해당 상황에 `UnexpectedRollbackException`런타임을 던져서 롤백이 발생한 상황을 전달한다. 그리고 이 트랜잭션은 재활용이 불가능하다. 
+이럴경우 작업자는 외부 트랜잭션의 커밋을 기대했으나 결과적으로 롤백되기 때문에 기대와 다르게 실행되게 된다. 스프링은 해당 상황에 `UnexpectedRollbackException`런타임을 던져서 롤백이 발생한 상황을 전달한다. __그리고 이 트랜잭션은 재활용이 불가능하다.__
 
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCoMNX%2FbtrXOwzJDVl%2Fron1GEDMKMUleY7no5uKr1%2Fimg.png)
 
@@ -58,7 +58,16 @@ __`marked as rollback-only`__
 
 실행 순서 상 내부 트랜잭션이나, 트랜잭션이 분리되었기 때문에 각각의 트랜잭션은 영향을 주고 받지 않는다. 
 
-내부 트랜잭션을 분리하려면 내부 트랜잭션을 시작할때 `Propagation.REQUIRES_NEW`옵션을 주면 가능하다. 이는 실제로  DB커넥션이 분리되기 때문에 동시에 2개의 커넥션을 사용하는 것과 같다. 
+내부 트랜잭션을 분리하려면 내부 트랜잭션을 시작할때 `Propagation.REQUIRES_NEW`옵션을 주면 가능하다. 이는 실제로  DB커넥션이 분리되기 때문에 동시에 2개의 커넥션을 사용하는 것과 같다. 그렇기에 만약 내부 트랜잭션의 처리가 길어지면 __하나의 요청에 여러개의 커넥션을 사용하게 되는 문제가 발생할 수 있다.__
+
+물론 트랜잭션의 진행순서는 내부 트랜잭션이 먼저 수행되고 최종적으로 내부 트랜잭션이 종료된다. 
+```java
+@Transactional(propagation = Propagation.REQUIRES_NEW)
+```
+
+## ETC
+트랜잭션 전파옵션(readOnly, timeout...)은 신규 트랜잭션(물리)일때만 적용된다. 
+내부 트랜잭션일 경우에는 적용되지 않는다. 
 
 
 
