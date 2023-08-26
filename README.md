@@ -23,8 +23,9 @@
 * <a href="https://github.com/awesomejang/TIL/blob/main/Spring/ConnectionPool.md">스프링 ConnectionPool</a>
 * <a href="https://github.com/awesomejang/TIL/blob/main/Spring/DataSource.md">스프링 DataSource</a>
 * <a href="https://github.com/awesomejang/TIL/blob/main/Spring/Manage_Transaction.md">스프링 트랜잭션 관리</a>
+* <a href="https://github.com/awesomejang/TIL/blob/main/Spring/TransactionPropagation.md">스프링 트랜잭션 전파 방식</a>
 * JWT  
-  * <a href="https://github.com/awesomejang/TIL/blob/main/Spring/JWT.md">JWT의 개념정리</a>
+  * <a href="https://github.com/awesomejang/TIL/blob/main/Spring/JWT.md">JWT의 개념정리</a>  
 
 # Exception
 * Jackson
