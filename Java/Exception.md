@@ -10,7 +10,7 @@
 * `Exception` : 체크 예외 
     * 애플리케이션 로직에서 사용 가능한 최상위 예외 
     * Exception과 그 하위 예외는 모두 컴파일러가 체크하는 체크예외 
-* `RuntimeException`` : 언체크, 런타임 예외 
+* `RuntimeException` : 언체크, 런타임 예외 
     * 컴파일러가 체크 하지 않는 언체크 예외 
     * RuntimeException과 자식 예외는 모두 언체크 예외이다.      
 
