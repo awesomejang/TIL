@@ -26,6 +26,8 @@
 * <a href="https://github.com/awesomejang/TIL/blob/main/Spring/TransactionPropagation.md">스프링 트랜잭션 전파 방식</a>
 * JWT  
   * <a href="https://github.com/awesomejang/TIL/blob/main/Spring/JWT.md">JWT의 개념정리</a>  
+* JPA
+  * <a href="https://github.com/awesomejang/TIL/blob/main/Spring/JPA/persistenceContext.md">영속성 컨텍스트</a>  
 
 # Exception
 * Jackson
