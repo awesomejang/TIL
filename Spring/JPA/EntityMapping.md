@@ -62,3 +62,49 @@ __운영 DB 환경에선 create, create-drop, update 절대 사용 XXX(생각만
 * @Transient : 필드를 컬럼에 매핑 하지 않음
     * 매핑을 하지 않는다. 
     * DB에 저장, 조회도 하지않음 
+
+## 기본키(PK) 매핑
+* @Id
+* @GenertatedValue
+```java
+@Id
+@GeneratedValue
+private Long id;
+```
+
+* 직접 할당만 한다면? -> @Id만 사용
+* 자동 생성 사용 -> @GeneratedValue 사용
+    * IDENTITY : DB에 위임 -> AutoIncrement ex) MySQL
+    * SEQUENCE : 데이터베이스 시퀸스 사용 ex) ORACLE
+        * @SequenceGenerator 설정 필요
+    * TABLE : 키 생성용 테이블 사용, DB에 테이블 생성하여 사용하기에 모든 DB에서 사용 가능  
+        * @TableGerator 필요
+    * AUTO : DB에 따라 자동 지정(__기본값__)
+
+### IDENTITY
+* 주로 MySQL, PostgreSQL ...에서 사용 
+* 트랜잭션 커밋 시점에 INSERT 쿼리가 실행된다. -> 커밋전에는 데이터를 알 수 없다. 
+    * 그래서 em.persist()시점에 즉시 INSERT INTO 쿼리를 실행하여 DB에서 Id값 조회
+```java
+@Id
+@GeratedValue(strategy = GenerationType.INDENTITY)
+private Long id;
+```
+
+### SEQUENCE
+시퀸스로 PK값을 순서대로 생성하는 DB에서 사용 
+ex) 오라클, H2....
+
+```java
+@Entity
+@SequenceGenerator(name ="BOARD_SEQ_SEQUENCE"
+                , sequenceName = "BOARD_SEQ" // DB에 생성된 시퀸스 이름 
+                , initalValue = 1, allocationSize = 1) // 초기값과 얼만큼 증가할지
+public Class Board {
+    @Id
+    @GeneratedValue(strategy = GenertationType.SEQUENCE
+                  , generator = "BOARD_SEQ_SEQUENCE") // 상단에 생성한 generator 와 매핑 
+    private Long id;
+}
+
+```
