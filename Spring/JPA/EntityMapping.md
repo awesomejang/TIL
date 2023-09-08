@@ -106,5 +106,58 @@ public Class Board {
                   , generator = "BOARD_SEQ_SEQUENCE") // 상단에 생성한 generator 와 매핑 
     private Long id;
 }
-
 ```
+
+## 객체간 연관관계
+테이블은 FK로 조인을 사용하여 연관관계를 만들지만 객체는 참조를 통해 연관 객체와 연결한다. 
+
+* 단방향 연관관계를 지향하되, 필요에 따라 양방향으로 설정할 수 도 있다. 
+* 양방향 연관관계 설정 시 연관관계의 주인을 설정하고, 주인 객체를 통해 데이터를 조작한다. 
+* mappedBy로 단순 양방향 연관임을 설정하고, 해당 필드는 데이터의 변경, 수정등에서 제외된다. 
+
+```java
+@Entity
+public Class Player {
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID") // 연관관계 연결 할 FK 설정_연관관계의 주인
+    private Team team;
+}
+
+@Entity
+public Class Team {
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "team") // Player의 team 필드에 연관 설정 
+    private List<Player> players = new ArrayList<Player>();
+}
+```
+
+__양방향 연관관계__
+*   양방향으로 설정 시 서로 다른 단방향 관계 2개라고 생각해야한다. 
+    * 연관관계의 실질적인 양방향은 없다. 
+* 양방향으로 설정 시 데이터를 두군데 모두에 입력해두는게 좋다. 
+    * 1차 캐시에 데이터가 있을 경우 1차 캐시만 바라보기 때문 
+* 주인이 아닌 쪽의 양방향 연관관계는 단순히 조회기능이 추가 되었다고 생각해야한다.
+* 가능한 단방향으로 문제 해결 권장
+* 실수를 방지하기 위해 편의 메소드 사용을 권장 
+```java
+public void chageTeam(Team team) {
+    // 두 연관관계 모두에 데이터 입력 
+    this.team = team;
+    team.getPlayers().add(this); 
+}
+```
+__연관관계 주인__
+* 두 객체의 관계중 한개를 주인으로 설정
+    * 외래키가 있는 객체를 주인으로 설정 -> __외래 키를 관리(등록, 수정)__
+* 주인이 아닌쪽은 읽기만 가능, 수정이나 삭제 등 데이터 변경 안된다. 
